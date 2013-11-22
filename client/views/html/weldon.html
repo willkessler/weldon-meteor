@@ -1,0 +1,20 @@
+<head>
+  <title>Weldon</title>
+</head>
+
+<body>
+  <div id="outer">
+    {{> activities}}
+  </div>
+</body>
+
+<template name="activity">
+  <div class="activity">{{description}}</div>
+</template>
+
+<template name="activities">
+  <h1>Important Todos</h1>
+  {{#each activities}}
+    {{> activity}}
+  {{/each}}
+</template>
