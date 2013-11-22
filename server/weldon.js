@@ -41,7 +41,7 @@ if (Meteor.isServer) {
 	    password : 'weldon',
 	    database : 'Weldon2'
 	});
-	// queryTodos();
+	queryTodos();
     });
 }
 
