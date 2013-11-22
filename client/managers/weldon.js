@@ -5,21 +5,30 @@ if (Meteor.isClient) {
 	return Activities.find();	
     };
 
-/*
-    Template.hello.greeting = function () {
-	return "Weldon Healthy To-Do System.";
-    };
-
-    Template.hello.events({
-	'click input' : function () {
-	    // template data, if any, is available in 'this'
-	    if (typeof console !== 'undefined')
-		console.log("You pressed the button");
-	    Meteor.call('queryTodos', function(error, result) {
-		console.log('We queried todos');
-		console.dir(result);
-	    });
-	}
+    Router.configure({
+	layoutTemplate: 'layout'
     });
-*/
+
+    Router.map(function() {
+	this.route('home', {
+	    path: '/',
+	    template: 'activities'
+	});
+    });
+
+    Router.map(function() {
+	this.route('add', {
+	    path: '/add',
+	    template: 'addTask'
+	});
+    });
+
+    Router.map(function() {
+	this.route('score', {
+	    path: '/score',
+	    template: 'score'
+	});
+    });
+
+    $('.btn-group').button();
 }

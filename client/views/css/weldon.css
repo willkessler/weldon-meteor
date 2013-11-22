@@ -11,3 +11,8 @@
     width:300px;
 }
 
+#activitiesListBox {
+    height:100%;
+    overflow-x:none;
+    overflow-y:scroll;
+}

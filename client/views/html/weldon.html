@@ -1,25 +1,25 @@
-<head>
-  <title>Weldon</title>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+<template name="layout">
+  <head>
+    <title>Weldon</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 
-  <!-- Optional theme -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
 
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-</head>
+  </head>
 
-<body>
-  <div id="outer">
-    {{> activities}}
-  </div>
-      <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse" role="navigation">
-  	<a class="navbar-brand" style="cursor:pointer;color:#aaf;font-weight:800;font-family:Arial;font-size:1.25em;">+</a>
-	<a class="navbar-brand" style="cursor:pointer;">Score</a>
-	<a class="navbar-brand" style="cursor:pointer;">Do!</a>
+  <body>
+    <div id="outer">
+      {{yield}}
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom navbar-inverse" role="navigation">
+      <a href="{{pathFor 'add'}}" class="navbar-brand" style="cursor:pointer;color:#aaf;font-weight:800;font-family:Arial;font-size:1.25em;">+</a>
+      <a href="{{pathFor 'score'}}" class="navbar-brand" style="cursor:pointer;">Score</a>
+      <a href="{{pathFor 'home'}}" class="navbar-brand" style="cursor:pointer;">Do!</a>
     </nav>
-</body>
+  </body>
+</template>
 
 <template name="activity">
   <div class="activity">{{description}}</div>
@@ -27,7 +27,62 @@
 
 <template name="activities">
   <h1>Important Todos</h1>
-  {{#each activities}}
-    {{> activity}}
-  {{/each}}
+  <div id="activitiesListBox">
+    {{#each activities}}
+      {{> activity}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="addTask">
+  <h3>Add activity</h3>
+  <form role="form">
+    <div class="form-group">
+      <textarea id="newTask" class="form-control" rows="5"></textarea>
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary">Add</button>
+  </form>
+</template>
+
+<template name="score">
+  <h3>Score activities</h3>
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option1"> Boring
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option2"> Neutral
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option3"> Exciting
+    </label>
+  </div>
+  <br/>
+  <br/>
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option1"> Stressful
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option2"> Some work
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option3"> Relaxing
+    </label>
+  </div>
+  <br/>
+  <br/>
+
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option1"> Unimportant
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option2"> Matters a bit
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option3"> Critical
+    </label>
+  </div>
+
 </template>
