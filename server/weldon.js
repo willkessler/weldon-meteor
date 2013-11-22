@@ -18,6 +18,8 @@ if (Meteor.isServer) {
 					energy      : rows[i].energy,
 					benefits    : rows[i].for_benefit_name1
 				      });
+		    console.log('inserted row: ');
+		    console.dir(rows[i]);
 		} else {
 		    Activities.update(activity._id, {$set: { activityId  : rows[i].activity_id,
 							     description : rows[i].description,
@@ -25,9 +27,11 @@ if (Meteor.isServer) {
 							     benefits    : rows[i].for_benefit_name1
 							   }
 						    });
+		    console.log('updated row: ');
+		    console.dir(rows[i]);
 		}
 	    }
-	}, function(err) { console.log("Couldn't wrap the mysql query callback."); }));
+	}, function(err) { console.log("Couldn't wrap the mysql query callback.");  console.dir(err); }));
 	connection.end();
     };
 
@@ -41,7 +45,7 @@ if (Meteor.isServer) {
 	    password : 'weldon',
 	    database : 'Weldon2'
 	});
-	queryTodos();
+	// queryTodos();
     });
 }
 
